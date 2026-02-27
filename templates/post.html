@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Post | CMS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+    min-height:100vh;
+}
+
+.navbar{
+    width:100%;
+    padding:18px 60px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(10px);
+    color:#fff;
+}
+
+.nav-btn{
+    padding:8px 18px;
+    border:none;
+    border-radius:6px;
+    background:#ff7a18;
+    color:#fff;
+    cursor:pointer;
+}
+
+.main{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    margin-top:60px;
+}
+
+.container{
+    max-width:800px;
+    margin: auto;
+    overflow: hidden;
+    padding:50px;
+    border-radius:14px;
+    background:#ffffff;
+    box-shadow:0 10px 30px rgba(0,0,0,0.25);
+    animation:fadeIn 0.8s ease;
+}
+
+.post-title{
+    font-size:30px;
+    margin-bottom:10px;
+    color:#2c5364;
+}
+
+.post-date{
+    font-size:13px;
+    color:#777;
+    margin-bottom:30px;
+}
+
+.post-image img{
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 12px;
+    margin-top: 20px;
+    object-fit: contain;
+}
+
+.post-content{
+    font-size:16px;
+    line-height:1.8;
+    color:#333;
+    margin-bottom:40px;
+}
+
+.back-btn{
+    padding:10px 20px;
+    border:none;
+    border-radius:6px;
+    background:#2c5364;
+    color:#fff;
+    cursor:pointer;
+}
+
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(20px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="navbar">
+    <h2>My CMS</h2>
+    <a href="/"><button class="nav-btn">Home</button></a>
+</div>
+
+<div class="main">
+
+<div class="container">
+
+    <div class="post-title">{{ post.title }}</div>
+
+    <div class="post-date">
+        Published on: {{ post.created_at }}
+    </div>
+
+    <div class="post-content">
+        {{ post.content }}
+    </div>
+
+    {% if post.image %}
+    <div class="post-image">
+        <img src="{{ url_for('static', filename='uploads/' + post.image) }}">
+    </div>
+    {% endif %}
+
+    <a href="/"><button class="back-btn">← Back to Home</button></a>
+
+</div>
+
+</div>
+
+</body>
+</html>
