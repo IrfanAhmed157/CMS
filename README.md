@@ -6,7 +6,7 @@ A fully functional Content Management System built using Flask, SQLite, HTML, an
 
 - Admin authentication
 - Create, edit & delete posts
-- Upload images with posts
+- Upload images and videos with posts
 - Dynamic post rendering
 - Responsive modern UI
 - Secure session handling
@@ -39,3 +39,4 @@ python app.py
 
 Username: admin  
 Password: admin123
+
