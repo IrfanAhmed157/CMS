@@ -78,6 +78,13 @@ body{
     object-fit: contain;
 }
 
+.post-video video{
+    width: 100%;
+    border-radius: 12px;
+    margin-top: 20px;
+    object-fit: contain;
+}
+
 .post-content{
     font-size:16px;
     line-height:1.8;
@@ -126,6 +133,14 @@ body{
     {% if post.image %}
     <div class="post-image">
         <img src="{{ url_for('static', filename='uploads/' + post.image) }}">
+    </div>
+    {% endif %}
+
+    {% if post.video %}
+    <div class="post-video">
+        <video controls>
+            <source src="{{ url_for('static', filename='uploads/' + post.video) }}">
+        </video>
     </div>
     {% endif %}
 

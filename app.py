@@ -67,18 +67,25 @@ def add_post():
         title = request.form['title']
         content = request.form['content']
         image = request.files.get('image')
+        video = request.files.get('video')
 
         image_name = ""
+        video_name = ""
 
         if image and image.filename != "":
             image_name = secure_filename(image.filename)
             image_path = os.path.join(app.config['UPLOAD_FOLDER'], image_name)
             image.save(image_path)
 
+        if video and video.filename != "":
+            video_name = secure_filename(video.filename)
+            video_path = os.path.join(app.config['UPLOAD_FOLDER'], video_name)
+            video.save(video_path)
+
         conn = get_db_connection()
         conn.execute(
-            'INSERT INTO posts (title, content, image) VALUES (?, ?, ?)',
-            (title, content, image_name)
+            'INSERT INTO posts (title, content, image,video) VALUES (?, ?, ?, ?)',
+            (title, content, image_name, video_name)
         )
         conn.commit()
         conn.close()
